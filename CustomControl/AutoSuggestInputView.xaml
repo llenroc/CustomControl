@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CustomControl.AutoSuggestInputView">
+    <ContentView.Content>
+        <StackLayout >
+            <Entry x:Name="Entry" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Placeholder="Enter text" Text="{Binding Text}" />
+            <ListView VerticalOptions="StartAndExpand" ItemsSource="{Binding Items}">
+                <ListView.Triggers>
+                    <DataTrigger TargetType="ListView" Binding="{Binding Source={x:Reference Entry}, Path=Text.Length}" Value="0">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </ListView.Triggers>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Text}" Detail="{Binding Detail}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Label />
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
