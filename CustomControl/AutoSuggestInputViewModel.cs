@@ -9,6 +9,7 @@ namespace CustomControl
     {
         private string _text;
         private List<SimpleListItem> _inputList;
+        private SimpleListItem _selectedItem;
 
         public AutoSuggestInputViewModel()
         {
@@ -84,5 +85,21 @@ namespace CustomControl
         }
 
         public ObservableCollection<SimpleListItem> Items { get; } = new ObservableCollection<SimpleListItem>();
+
+        public SimpleListItem SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged();
+
+                if (SelectedItem != null)
+                {
+                    Text = SelectedItem.Text;
+                    SelectedItem = null;
+                }
+            }
+        }
     }
 }

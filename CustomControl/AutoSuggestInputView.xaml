@@ -3,7 +3,7 @@
     <ContentView.Content>
         <StackLayout >
             <Entry x:Name="Entry" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Placeholder="Enter text" Text="{Binding Text}" />
-            <ListView VerticalOptions="StartAndExpand" ItemsSource="{Binding Items}">
+            <ListView VerticalOptions="StartAndExpand" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
                 <ListView.Triggers>
                     <DataTrigger TargetType="ListView" Binding="{Binding Source={x:Reference Entry}, Path=Text.Length}" Value="0">
                         <Setter Property="IsVisible" Value="False" />
